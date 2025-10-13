@@ -18,6 +18,7 @@ require('lazy').setup({
 			require("smoke").setup({ disable_italics = true })
 		end
 	},
+	{ 'wakatime/vim-wakatime',         lazy = false },
 	{
 		'nvim-lualine/lualine.nvim',
 		config = function()
