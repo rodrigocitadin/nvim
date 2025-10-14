@@ -20,6 +20,15 @@ require('lazy').setup({
 	},
 	{ 'wakatime/vim-wakatime',         lazy = false },
 	{
+		'akinsho/toggleterm.nvim',
+		version = "*",
+		config = function()
+			require("toggleterm").setup({
+				open_mapping = [[<C-\>]]
+			})
+		end
+	},
+	{
 		'nvim-lualine/lualine.nvim',
 		config = function()
 			require("lualine").setup({ options = { theme = 'auto' } })
