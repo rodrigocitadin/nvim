@@ -177,8 +177,9 @@ require('lazy').setup({
 			-- if you want to know more about mason.nvim
 			-- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 			lsp_zero.on_attach(function(client, bufnr)
-				-- see :help lsp-zero-keybindings
-				-- to learn the available actions
+				vim.keymap.set("n", "<leader>lj", function() vim.diagnostic.goto_prev({ float = true }) end, opts)
+				vim.keymap.set("n", "<leader>lk", function() vim.diagnostic.goto_next({ float = true }) end, opts)
+				vim.keymap.set({ "n", "v" }, "<leader>la", function() vim.lsp.buf.code_action() end, opts)
 				lsp_zero.default_keymaps({ buffer = bufnr })
 			end)
 
@@ -187,9 +188,9 @@ require('lazy').setup({
 				handlers = {
 					-- this first function is the "default handler"
 					-- it applies to every language server without a "custom handler"
-					function(server_name)
-						require('lspconfig')[server_name].setup({})
-					end,
+					-- function(server_name)
+					-- 	require('lspconfig')[server_name].setup({})
+					-- end,
 
 					-- this is the "custom handler" for `lua_ls`
 					lua_ls = function()
@@ -200,5 +201,9 @@ require('lazy').setup({
 				}
 			})
 		end
+	},
+	{
+		'nvim-treesitter/nvim-treesitter',
+		build = ':TSUpdate',
 	}
 })
