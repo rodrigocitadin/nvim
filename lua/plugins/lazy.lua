@@ -18,7 +18,13 @@ require('lazy').setup({
 			require("smoke").setup({ disable_italics = true })
 		end
 	},
-	{ 'wakatime/vim-wakatime',         lazy = false },
+	{ "shaunsingh/nord.nvim" },
+	{ "rose-pine/neovim" },
+	{ "ramojus/mellifluous.nvim" },
+	{ "bettervim/yugen.nvim" },
+
+	--
+	{ 'wakatime/vim-wakatime',   lazy = false },
 	{
 		'akinsho/toggleterm.nvim',
 		version = "*",
@@ -51,16 +57,36 @@ require('lazy').setup({
 		event = "InsertEnter",
 		config = true
 	},
-	{ 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+	{
+		'nvim-telescope/telescope.nvim',
+		branch = '0.1.x',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		config = function()
+			require("telescope").setup({
+				hidden = true
+			})
+		end
+	},
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
 		lazy = false,
-		requires = {
-			"nvim-tree/nvim-web-devicons",
-		},
 		config = function()
-			require("nvim-tree").setup {}
+			require("nvim-tree").setup {
+				view = {
+					adaptive_size = true
+				},
+				filters = {
+					enable = true,
+					dotfiles = false,
+					git_clean = false,
+					git_ignored = false,
+					no_bookmark = false,
+					no_buffer = false,
+					-- custom = { "node_modules", "\\.cache" },
+					-- exclude = {},
+				},
+			}
 		end,
 	},
 	{

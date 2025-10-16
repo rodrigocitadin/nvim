@@ -21,3 +21,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = { "*.go" },
 	command = "setlocal tabstop=8 softtabstop=8 shiftwidth=8",
 })
+
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.nvim-undo"
