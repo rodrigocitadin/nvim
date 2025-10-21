@@ -173,6 +173,11 @@ require('lazy').setup({
 			-- This is where all the LSP shenanigans will live
 			local lsp_zero = require('lsp-zero')
 			lsp_zero.extend_lspconfig()
+			vim.diagnostic.config({
+				virtual_text = {
+					enable = true
+				}
+			})
 
 			-- if you want to know more about mason.nvim
 			-- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
