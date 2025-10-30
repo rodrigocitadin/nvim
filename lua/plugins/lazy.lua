@@ -30,7 +30,8 @@ require('lazy').setup({
 		version = "*",
 		config = function()
 			require("toggleterm").setup({
-				open_mapping = [[<C-\>]]
+				open_mapping = [[<C-\>]],
+				direction = "float"
 			})
 		end
 	},
@@ -210,5 +211,53 @@ require('lazy').setup({
 	{
 		'nvim-treesitter/nvim-treesitter',
 		build = ':TSUpdate',
+		config = function()
+			require 'nvim-treesitter.configs'.setup {
+				highlight = {
+					enable = true,
+				},
+			}
+		end
+	},
+	{
+		"yetone/avante.nvim",
+		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+		-- ⚠️ must add this setting! ! !
+		build = vim.fn.has("win32") ~= 0
+			and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+			or "make",
+		event = "VeryLazy",
+		version = false, -- Never set this value to "*"! Never!
+		---@module 'avante'
+		---@type avante.Config
+		opts = {
+			instructions_file = "avante.md",
+			provider = "gemini",
+			mode = "legacy",
+			auto_suggestions_provider = nil,
+			providers = {
+				gemini = {
+					endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+					model = "gemini-2.5-pro",
+					timeout = 30000, -- Timeout in milliseconds
+					context_window = 1048576,
+					use_ReAct_prompt = true,
+					extra_request_body = {
+						generationConfig = {
+							temperature = 0.75,
+						},
+					},
+				},
+			}
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-mini/mini.pick", -- for file_selector provider mini.pick
+			"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+			"ibhagwan/fzf-lua", -- for file_selector provider fzf
+			"stevearc/dressing.nvim", -- for input provider dressing
+			"folke/snacks.nvim", -- for input provider snacks
+		},
 	}
 })
