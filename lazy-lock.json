@@ -12,7 +12,6 @@
   "mason.nvim": { "branch": "main", "commit": "ad7146aa61dcaeb54fa900144d768f040090bff0" },
   "mellifluous.nvim": { "branch": "main", "commit": "b51ffc0b3d39ce16dec3826b6b2a259f10367456" },
   "mini.pick": { "branch": "main", "commit": "bb764a57b349ad3e8d5e7d8855b0c6104e2cc17c" },
-  "neovim": { "branch": "main", "commit": "72a04c4065345b51b56aed4859ea1d884f734097" },
   "nord.nvim": { "branch": "master", "commit": "80c1e5321505aeb22b7a9f23eb82f1e193c12470" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-autopairs": { "branch": "master", "commit": "7a2c97cccd60abc559344042fefb1d5a85b3e33b" },

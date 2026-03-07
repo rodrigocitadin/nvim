@@ -19,12 +19,23 @@ require('lazy').setup({
 		end
 	},
 	{ "shaunsingh/nord.nvim" },
-	{ "rose-pine/neovim" },
 	{ "ramojus/mellifluous.nvim" },
 	{ "bettervim/yugen.nvim" },
+	{
+		"rose-pine/neovim",
+		config = function()
+			require("rose-pine").setup({
+				styles = {
+					bold = false,
+					italic = false,
+					transparency = false,
+				}
+			})
+		end
+	},
 
 	--
-	{ 'wakatime/vim-wakatime',   lazy = false },
+	{ 'wakatime/vim-wakatime', lazy = false },
 	{
 		'akinsho/toggleterm.nvim',
 		version = "*",

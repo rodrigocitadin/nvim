@@ -1,1 +1,1 @@
-vim.cmd("colorscheme mellifluous")
+vim.cmd("colorscheme nord")
